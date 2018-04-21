@@ -6,8 +6,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ke0vfyex0yrtwjsaw6sazeivnyxegjcg
     volumes:
-      - ./etc_mysql:/etc/mysql
-      - ./mysql_data:/var/lib/mysql
       - ./sharefolder:/tmp/sharefolder
+      - ./mysql_data:/var/lib/mysql
     ports:
       - 3306:3306
