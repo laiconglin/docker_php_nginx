@@ -1,0 +1,13 @@
+version: "3"
+services:
+  mysql5.7:
+    image: mysql:5.7.22
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ke0vfyex0yrtwjsaw6sazeivnyxegjcg
+    volumes:
+      - ./etc_mysql:/etc/mysql
+      - ./mysql_data:/var/lib/mysql
+      - ./sharefolder:/tmp/sharefolder
+    ports:
+      - 3306:3306
