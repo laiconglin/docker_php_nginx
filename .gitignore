@@ -2,3 +2,4 @@
 www/*
 mysqlDocker/mysql_data
 mysqlDocker/menghu.sql
+.DS_Store
