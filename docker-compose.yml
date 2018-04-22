@@ -1,6 +1,7 @@
 version: "3"
 services:
   fpm_php5.6:
+    restart: always
     image: php:5.6.latest-fpm
     volumes:
       - ./php5.6/etc:/usr/local/etc
@@ -9,24 +10,29 @@ services:
       - ./www:/var/www/html
 
   fpm_php7.2:
+    restart: always
     image: php:7.2.latest-fpm
     volumes:
       - ./php7.2/etc:/usr/local/etc
       - ./php7.2/no-debug-non-zts-20170718:/usr/local/lib/php/extensions/no-debug-non-zts-20170718
       - ./sharefolder:/tmp/sharefolder
       - ./www:/var/www/html
+
   mysql5.7:
-    image: mysql:5.7.22
+    image: mysql:5.7.22.latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ke0vfyex0yrtwjsaw6sazeivnyxegjcg
     volumes:
       - ./sharefolder:/tmp/sharefolder
+      - ./etc_mysql:/etc/mysql
       - ./mysql_data:/var/lib/mysql
     ports:
       - 3306:3306
+
   nginx:
-    image: nginx:latest
+    image: nginx:1.13.8.latest
+    restart: always
     links:
       - fpm_php5.6:fpm_php5.6
       - fpm_php7.2:fpm_php7.2
