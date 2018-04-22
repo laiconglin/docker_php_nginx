@@ -1,5 +1,5 @@
 .idea
 www/*
-mysqlDocker/mysql_data
+mysql_data
 mysqlDocker/menghu.sql
 .DS_Store

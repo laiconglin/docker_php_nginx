@@ -15,6 +15,16 @@ services:
       - ./php7.2/no-debug-non-zts-20170718:/usr/local/lib/php/extensions/no-debug-non-zts-20170718
       - ./sharefolder:/tmp/sharefolder
       - ./www:/var/www/html
+  mysql5.7:
+    image: mysql:5.7.22
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ke0vfyex0yrtwjsaw6sazeivnyxegjcg
+    volumes:
+      - ./sharefolder:/tmp/sharefolder
+      - ./mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
   nginx:
     image: nginx:latest
     links:
