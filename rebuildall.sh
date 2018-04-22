@@ -9,3 +9,4 @@ cd ../DockerfilePHP7.2Fpm/
 bash ./build.sh
 # delete not used images
 docker image prune --force
+docker images
