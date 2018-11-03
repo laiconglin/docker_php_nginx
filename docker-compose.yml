@@ -1,7 +1,7 @@
 version: "3"
 services:
   fpm_php5.6:
-    restart: always
+    restart: "no"
     image: php:5.6.latest-fpm
     volumes:
       - ./php5.6/etc:/usr/local/etc
@@ -10,7 +10,7 @@ services:
       - ./www:/var/www/html
 
   fpm_php7.2:
-    restart: always
+    restart: "no"
     image: php:7.2.latest-fpm
     volumes:
       - ./php7.2/etc:/usr/local/etc
@@ -20,19 +20,19 @@ services:
 
   mysql5.7:
     image: mysql:5.7.22.latest
-    restart: always
+    restart: "no"
     environment:
       MYSQL_ROOT_PASSWORD: ke0vfyex0yrtwjsaw6sazeivnyxegjcg
     volumes:
       - ./sharefolder:/tmp/sharefolder
-      #- ./etc_mysql:/etc/mysql
-      #- ./mysql_data:/var/lib/mysql # 当报错的时候，可以把这行删了，这个是做的数据库数据的映射
+      - ./etc_mysql:/etc/mysql
+      - ./mysql_data:/var/lib/mysql # 当报错的时候，可以把这行删了，这个是做的数据库数据的映射
     ports:
       - 3306:3306
 
   nginx:
     image: nginx:1.13.8.latest
-    restart: always
+    restart: "no"
     links:
       - fpm_php5.6:fpm_php5.6
       - fpm_php7.2:fpm_php7.2
