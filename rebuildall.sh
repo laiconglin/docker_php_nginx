@@ -8,5 +8,6 @@ bash ./build.sh
 cd ../DockerfilePHP7.2Fpm/
 bash ./build.sh
 # delete not used images
+docker container prune --force
 docker image prune --force
 docker images

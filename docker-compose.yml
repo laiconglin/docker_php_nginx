@@ -4,17 +4,17 @@ services:
     restart: "no"
     image: php:5.6.latest-fpm
     volumes:
-      - ./php5.6/etc:/usr/local/etc
+      - ./php5.6/php5_etc:/usr/local/etc
       - ./php5.6/no-debug-non-zts-20131226:/usr/local/lib/php/extensions/no-debug-non-zts-20131226
       - ./sharefolder:/tmp/sharefolder
       - ./www:/var/www/html
 
-  fpm_php7.2:
+  fpm_php7.1:
     restart: "no"
-    image: php:7.2.latest-fpm
+    image: php:7.1.latest-fpm
     volumes:
-      - ./php7.2/etc:/usr/local/etc
-      - ./php7.2/no-debug-non-zts-20170718:/usr/local/lib/php/extensions/no-debug-non-zts-20170718
+      - ./php7.1/php7_etc:/usr/local/etc
+      - ./php7.1/no-debug-non-zts-20160303:/usr/local/lib/php/extensions/no-debug-non-zts-20160303
       - ./sharefolder:/tmp/sharefolder
       - ./www:/var/www/html
 
@@ -35,7 +35,7 @@ services:
     restart: "no"
     links:
       - fpm_php5.6:fpm_php5.6
-      - fpm_php7.2:fpm_php7.2
+      - fpm_php7.1:fpm_php7.1
     volumes:
       - ./etc_nginx:/etc/nginx
       - ./sharefolder:/tmp/sharefolder
