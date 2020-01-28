@@ -10,7 +10,8 @@ RUN apt-get update --allow-unauthenticated \
 	# install gd
 	&& docker-php-ext-install gd \
 	&& apt-get install -y --allow-unauthenticated vim git curl zip \
-	&& composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+	&& chmod a+x /usr/local/bin/composer \
+	&& composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
 	&& docker-php-ext-install pdo pdo_mysql bcmath zip \
 	&& ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 	&& rm -rf /var/lib/apt/lists/*
