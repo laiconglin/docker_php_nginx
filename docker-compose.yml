@@ -13,8 +13,8 @@ services:
     restart: "no"
     image: php:7.1.latest-fpm
     volumes:
-      - ./php7.1/php7_etc:/usr/local/etc
-      - ./php7.1/no-debug-non-zts-20160303:/usr/local/lib/php/extensions/no-debug-non-zts-20160303
+      # - ./php7.1/php7_etc:/usr/local/etc
+      # - ./php7.1/no-debug-non-zts-20160303:/usr/local/lib/php/extensions/no-debug-non-zts-20160303
       - ./sharefolder:/tmp/sharefolder
       - ./www:/var/www/html
 
