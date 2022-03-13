@@ -6,6 +6,8 @@ services:
   fpm_php7.4:
     restart: "no"
     image: php:7.4.latest-fpm
+    links:
+      - mysql5.7:mysql5.7
     volumes:
       - ./etc_php7.4/etc:/usr/local/etc
       - ./etc_php7.4/no-debug-non-zts-20190902:/usr/local/lib/php/extensions/no-debug-non-zts-20190902
