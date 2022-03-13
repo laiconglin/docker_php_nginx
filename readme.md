@@ -4,6 +4,22 @@
 - docker中国镜像源：http://registry.docker-cn.com
 
 
+```
+{
+  "registry-mirrors": [
+    "https://hub-mirror.c.163.com"
+  ],
+  "debug": true,
+  "experimental": false,
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  }
+}
+```
+
 ## 2. 易于使用的 PHP ，Nginx，MySQL 开发环境
 
 PHP开发环境配置伴侣
