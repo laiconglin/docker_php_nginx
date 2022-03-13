@@ -1,7 +1,7 @@
 server {
     listen       80;
     server_name  127.0.0.1;
-    root /var/www/html/test/public;
+    root /var/www/html/leliapp/leliapp_admin/public;
     index  index.html index.php;
 
     error_page  404              /404.html;
@@ -23,7 +23,7 @@ server {
     }
 
     location ~ ^/index.php$ {
-        fastcgi_pass fpm_php7.4:9000;
+        fastcgi_pass fpm_php7.1:9000;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
         fastcgi_read_timeout 600;

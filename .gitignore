@@ -1,6 +1,7 @@
 .idea
 www/*
-mysql_data
+# mysql_data
 mysqlDocker/menghu.sql
 .DS_Store
 sharefolder
+test/*
