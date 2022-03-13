@@ -1,11 +1,14 @@
 version: "3"
+volumes:
+  mysql_data:
+
 services:
   fpm_php7.4:
     restart: "no"
     image: php:7.4.latest-fpm
     volumes:
-      # - ./php7.1/php7_etc:/usr/local/etc
-      # - ./php7.1/no-debug-non-zts-20160303:/usr/local/lib/php/extensions/no-debug-non-zts-20160303
+      - ./etc_php7.4/etc:/usr/local/etc
+      - ./etc_php7.4/no-debug-non-zts-20190902:/usr/local/lib/php/extensions/no-debug-non-zts-20190902
       - ./sharefolder:/tmp/sharefolder
       - ./www:/var/www/html
   mysql5.7:
@@ -16,10 +19,12 @@ services:
     volumes:
       - ./sharefolder:/tmp/sharefolder
       - ./etc_mysql:/etc/mysql # 数据库配置映射
-      - ./mysql_data:/var/lib/mysql # 当报错的时候，可以把这行删了，这个是做的数据库数据的映射
+      # docker volume create --name mysql_data && docker volume ls
+      - mysql_data:/var/lib/mysql # 当报错的时候，可以把这行删了，这个是做的数据库数据的映射
     ports:
       - 3306:3306
 #
+# /etc/exports  文件加上 root  （no_root_squash） 不然出现 chown: changing ownership of '/var/lib/mysql/._ib_buffer_pool': Operation not permitted
 # DataGrid: 链接：jdbc:mysql://localhost:3306?useSSL=false
 #
   nginx:
