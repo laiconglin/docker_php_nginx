@@ -15,10 +15,13 @@ services:
       MYSQL_ROOT_PASSWORD: ke0vfyex0yrtwjsaw6sazeivnyxegjcg
     volumes:
       - ./sharefolder:/tmp/sharefolder
-      - ./etc_mysql:/etc/mysql
-      # - ./mysql_data:/var/lib/mysql # 当报错的时候，可以把这行删了，这个是做的数据库数据的映射
+      - ./etc_mysql:/etc/mysql # 数据库配置映射
+      - ./mysql_data:/var/lib/mysql # 当报错的时候，可以把这行删了，这个是做的数据库数据的映射
     ports:
       - 3306:3306
+#
+# DataGrid: 链接：jdbc:mysql://localhost:3306?useSSL=false
+#
   nginx:
     image: nginx:1.21.6.latest
     restart: "no"
